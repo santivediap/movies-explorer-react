@@ -1,16 +1,48 @@
-# React + Vite
+# Movie Explorer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicación web en React que consume la API de [The Movie Database (TMDB)](https://developer.themoviedb.org/docs). Permite ver las películas populares, buscar por título y gestionar una lista de favoritos que se guarda en `localStorage`.
 
-Currently, two official plugins are available:
+## Tecnologías
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- React + Vite
+- React Router
+- Context API
 
-## React Compiler
+## Puesta en marcha
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+1. Instalar dependencias:
 
-## Expanding the ESLint configuration
+   ```bash
+   npm install
+   ```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+2. Crear un archivo `.env` en la raíz (puedes copiar `.env.example`) con tu API Key de TMDB:
+
+   ```
+   VITE_TMDB_API_KEY=
+   ```
+
+3. Arrancar el servidor de desarrollo:
+
+   ```bash
+   npm run dev
+   ```
+
+## Estructura
+
+```
+src/
+├── App.jsx                 # Rutas y provider del contexto
+├── main.jsx                # Punto de entrada (BrowserRouter)
+├── components/
+│   ├── NavBar.jsx          # Barra de navegación fija
+│   └── MovieCard.jsx       # Tarjeta de película con botón de favorito
+├── pages/
+│   ├── Home.jsx            # Populares + búsqueda
+│   └── Favorites.jsx       # Lista de favoritos
+├── contexts/
+│   └── MovieContext.jsx    # Estado global de favoritos + useMovieContext
+├── services/
+│   └── api.js              # Llamadas a la API de TMDB
+└── css/                    # Estilos por componente
+```
